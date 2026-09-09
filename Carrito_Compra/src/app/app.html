@@ -1,0 +1,31 @@
+<header class="navbar">
+
+  <div class="logo">
+    🛍️ CarritoShop
+  </div>
+
+  <div class="navbar-derecha">
+
+    <div class="titulo-navbar">
+      {{ titulo }}
+    </div>
+
+    <button class="btn-carrito-nav" (click)="irAlCarrito()">
+      🛒
+      <span class="badge" *ngIf="totalArticulos > 0">
+        {{ totalArticulos }}
+      </span>
+    </button>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <app-productos></app-productos>
+
+  <app-carrito></app-carrito>
+
+</main>

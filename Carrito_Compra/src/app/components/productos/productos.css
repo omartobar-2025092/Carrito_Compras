@@ -1,0 +1,133 @@
+.productos-section {
+  padding: 48px 40px 24px;
+}
+
+.productos-header {
+  margin-bottom: 32px;
+}
+
+.etiqueta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #6d28d9;
+}
+
+.productos-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 8px 0 6px;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.productos-header p {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.producto-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px;
+  border: 1px solid #eef0f4;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.producto-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #7c3aed, #ec4899);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  border-color: #e9d5ff;
+}
+
+.producto-card:hover::before {
+  opacity: 1;
+}
+
+.producto-icono {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f5f3ff, #fdf2f8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.producto-info h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.producto-info p {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.precio {
+  display: block;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 18px;
+}
+
+.btn-agregar {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25);
+}
+
+.btn-agregar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(124, 58, 237, 0.35);
+}
+
+.btn-agregar:active {
+  transform: translateY(0);
+}
+
+.btn-agregar.agregado {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+}
+
+@media (max-width: 640px) {
+  .productos-section {
+    padding: 32px 20px 16px;
+  }
+}

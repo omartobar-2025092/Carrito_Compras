@@ -1,0 +1,167 @@
+<section class="carrito-section" id="carrito">
+
+  <div class="carrito-header">
+
+    <div>
+
+      <span class="etiqueta">
+        RESUMEN
+      </span>
+
+      <h1>
+        Mi carrito
+        <span class="contador" *ngIf="carrito.length > 0">
+          {{ totalArticulos }} artículo{{ totalArticulos === 1 ? '' : 's' }}
+        </span>
+      </h1>
+
+    </div>
+
+    <button
+      *ngIf="carrito.length > 0"
+      class="btn-vaciar"
+      (click)="vaciarCarrito()"
+    >
+      Vaciar carrito
+    </button>
+
+  </div>
+
+
+  <div
+    class="carrito-vacio"
+    *ngIf="carrito.length === 0"
+  >
+
+    <div class="carrito-vacio-icon">
+      🛒
+    </div>
+
+    <h2>
+      Tu carrito está vacío
+    </h2>
+
+    <p>
+      Agrega productos para comenzar tu compra.
+    </p>
+
+  </div>
+
+
+  <div
+    class="carrito-contenido"
+    *ngIf="carrito.length > 0"
+  >
+
+    <div
+      class="carrito-item"
+      *ngFor="let producto of carrito"
+    >
+
+      <div class="item-info">
+
+        <div class="item-icono">
+          {{ obtenerIcono(producto.nombre) }}
+        </div>
+
+        <div>
+          <h2>
+            {{ producto.nombre }}
+          </h2>
+
+          <span>
+            Q{{ producto.precio | number:'1.2-2' }}
+            por unidad
+          </span>
+        </div>
+
+      </div>
+
+
+      <div class="cantidad">
+
+        <label>
+          Cantidad
+        </label>
+
+        <div class="cantidad-control">
+
+          <button
+            type="button"
+            class="btn-stepper"
+            (click)="decrementar(producto)"
+          >
+            −
+          </button>
+
+          <input
+            type="number"
+            min="1"
+            [value]="producto.cantidad"
+            (change)="cambiarCantidad(producto, $event)"
+          >
+
+          <button
+            type="button"
+            class="btn-stepper"
+            (click)="incrementar(producto)"
+          >
+            +
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="subtotal">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong>
+          Q{{
+            producto.precio
+            | subtotal:producto.cantidad
+            | number:'1.2-2'
+          }}
+        </strong>
+
+      </div>
+
+
+      <button
+        class="btn-eliminar"
+        title="Eliminar producto"
+        (click)="eliminarProducto(producto.id)"
+      >
+        🗑️
+      </button>
+
+    </div>
+
+
+    <div class="total-container">
+
+      <div>
+
+        <span>
+          Total de la compra
+        </span>
+
+        <h2>
+          Q{{
+            carrito
+            | total
+            | number:'1.2-2'
+          }}
+        </h2>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,51 @@
+<section class="productos-section" id="productos">
+
+  <div class="productos-header">
+
+    <span class="etiqueta">CATÁLOGO</span>
+
+    <h1>Nuestros Productos</h1>
+
+    <p>Elige tus artículos favoritos y agrégalos al carrito.</p>
+
+  </div>
+
+  <div class="productos-grid">
+
+    <article
+      class="producto-card"
+      *ngFor="let producto of productos"
+    >
+
+      <div class="producto-icono">
+        {{ obtenerIcono(producto.nombre) }}
+      </div>
+
+      <div class="producto-info">
+        <h2>{{ producto.nombre }}</h2>
+        <p>Disponible en stock</p>
+      </div>
+
+      <span class="precio">
+        Q{{ producto.precio | number:'1.2-2' }}
+      </span>
+
+      <button
+        type="button"
+        class="btn-agregar"
+        [class.agregado]="productoRecienAgregado === producto.id"
+        (click)="agregarAlCarrito(producto)"
+      >
+        <ng-container *ngIf="productoRecienAgregado === producto.id; else textoNormal">
+          ✓ Agregado
+        </ng-container>
+        <ng-template #textoNormal>
+          Agregar al carrito
+        </ng-template>
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
